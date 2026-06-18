@@ -4,7 +4,6 @@ from eggogi import ValueUnacceptableError, FieldNotFoundError
 
 
 class Console:
-    """Класс пользовательского интерфейса (консольный)."""
     def __init__(self):
         self.db = Database()
 
@@ -13,7 +12,6 @@ class Console:
         return 'Да' if value == 1 else 'Нет'
 
     def _print_record(self, record: dict):
-        """Вывод одной записи в отформатированном виде."""
         print(f"{record['id']}: {record['name']}\n"
               f"Редкость: {int(record['rarity']) * '*'}\n"
               f"Предпочитаемая дистанция: {record['distance']}\n"
@@ -21,7 +19,6 @@ class Console:
               f"Может бежать в грязи? {self._yes_no(int(record['dirt']))}\n")
 
     def add_uma(self):
-        """Интерактивное добавление новой умамусуме."""
         print('\n--- Добавление умамусуме ---')
         data = {}
         prompts = {
@@ -41,7 +38,6 @@ class Console:
             print(f'Ошибка: недопустимое значение {e}')
 
     def show_all(self):
-        """Показ всех записей с возможностью сортировки."""
         sort_by, sort_order = self._ask_sort()
         try:
             records = self.db.find_uma(sort_by=sort_by, sort_order=sort_order)
@@ -56,7 +52,6 @@ class Console:
             self._print_record(rec)
 
     def search_umas(self):
-        """Поиск с фильтрацией и сортировкой."""
         print('\n--- Поиск умамусуме ---')
         print('Введите фильтры в виде "поле=значение" через запятую, например: rarity=2, strat=end')
         filtr = input('Фильтры: ').strip().lower()
@@ -90,7 +85,6 @@ class Console:
 
     @staticmethod
     def _ask_sort():
-        """Запрашивает у пользователя параметры сортировки."""
         sort_choice = input('Сортировать результат? (y/n, по умолчанию n): ').strip().lower()
         if sort_choice != 'y':
             return None, 'asc'
@@ -104,7 +98,6 @@ class Console:
         return sort_by, order
 
     def run(self):
-        """Главный цикл меню."""
         menu = """
 1. Добавить умамусуме
 2. Показать всех умамусуме

@@ -1,4 +1,3 @@
-## Файл: database.py (бывший eto_baza.py, расширен методом сортировки)
 from typing import List, Dict, Any, Optional
 from config import OUTLINE, DIST_ORDER, STRAT_ORDER
 from eggogi import FieldNotFoundError

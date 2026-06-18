@@ -1,4 +1,4 @@
-from konsos import run
+from konsos import Console
 
 if __name__ == "__main__":
-    run()
+    Console().run()

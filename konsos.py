@@ -1,11 +1,11 @@
-from eto_baza import Database
+from typing import Any
 from config import USER_INPUT, OUTLINE
 from eggogi import ValueUnacceptableError, FieldNotFoundError
 
 
 class Console:
-    def __init__(self):
-        self.db = Database()
+    def __init__(self, db: Any):
+        self.db = db
 
     @staticmethod
     def _yes_no(value: int) -> str:

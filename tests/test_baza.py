@@ -44,22 +44,22 @@ class TestDatabase(unittest.TestCase):
         self.assertIn('Поле is_golshi не найдено', str(cm.exception))
 
     def test_find_sort_by_id_asc(self):
-        self.db.add_uma({'name': 'C', 'rarity': 1, 'distance': 'sprint', 'strat': 'front', 'dirt': 0})
+        self.db.add_uma({'name': 'B', 'rarity': 1, 'distance': 'sprint', 'strat': 'front', 'dirt': 0})
         self.db.add_uma({'name': 'A', 'rarity': 2, 'distance': 'mile', 'strat': 'pace', 'dirt': 1})
         records = self.db.find_uma(sort_by='id', sort_order='asc')
         self.assertEqual([r['id'] for r in records], [1, 2])
 
     def test_find_sort_by_id_desc(self):
-        self.db.add_uma({'name': 'C', 'rarity': 1, 'distance': 'sprint', 'strat': 'front', 'dirt': 0})
+        self.db.add_uma({'name': 'B', 'rarity': 1, 'distance': 'sprint', 'strat': 'front', 'dirt': 0})
         self.db.add_uma({'name': 'A', 'rarity': 2, 'distance': 'mile', 'strat': 'pace', 'dirt': 1})
         records = self.db.find_uma(sort_by='id', sort_order='desc')
         self.assertEqual([r['id'] for r in records], [2, 1])
 
     def test_find_sort_by_name(self):
-        self.db.add_uma({'name': 'Charlie', 'rarity': 1, 'distance': 'sprint', 'strat': 'front', 'dirt': 0})
-        self.db.add_uma({'name': 'Alice', 'rarity': 2, 'distance': 'mile', 'strat': 'pace', 'dirt': 1})
+        self.db.add_uma({'name': 'B', 'rarity': 1, 'distance': 'sprint', 'strat': 'front', 'dirt': 0})
+        self.db.add_uma({'name': 'A', 'rarity': 2, 'distance': 'mile', 'strat': 'pace', 'dirt': 1})
         records = self.db.find_uma(sort_by='name', sort_order='asc')
-        self.assertEqual([r['name'] for r in records], ['Alice', 'Charlie'])
+        self.assertEqual([r['name'] for r in records], ['A', 'B'])
 
     def test_find_sort_by_distance(self):
         self.db.add_uma({'name': 'A', 'rarity': 1, 'distance': 'long', 'strat': 'front', 'dirt': 0})
